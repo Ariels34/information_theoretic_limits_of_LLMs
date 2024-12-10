@@ -2,11 +2,11 @@ from experimentPipeline import *
 from nGramModel import *
 from nGramRandomTextGenerator import *
 from hiddenMarkovModelTextGenerator import *
-from nanoGPTModel import *
 
 if __name__ == '__main__':
     vocab = ['A', 'B', 'C', 'D']
-    nGram = NGramModel(n=2, random_seed=42)
+    biGram = NGramModel(n=2, random_seed=42)
+    triGram = NGramModel(n=3, random_seed=42)
     # info_source = nGramRandomTextGenerator(vocab=vocab, n=2, random_seed=42)
 
     states = ["s1","s2","s3"]
@@ -26,6 +26,8 @@ if __name__ == '__main__':
     # print(hmm.calculate_stationary_distribution())
     # print(hmm.generate_text())
     # print(hmm.calculate_perplexity())
-
-    pipeline(hmm, nGram, source_length=100000)
+    print("biGram:")
+    pipeline(hmm, biGram, source_length=100000)
+    print("triGram:")
+    pipeline(hmm, triGram, source_length=100000)
 
