@@ -4,7 +4,7 @@ from scipy.linalg import eig
 import math
 
 class hiddenMarkovModelTextGenerator:
-    def __init__(self, states, observations, state_prob=None, transition_prob=None, emission_prob=None):
+    def __init__(self, states, observations, state_prob=None, transition_prob=None, emission_prob=None, random_seed=None):
         self.num_states = len(states)
         self.num_observations = len(observations)
         self.states = states
@@ -12,6 +12,9 @@ class hiddenMarkovModelTextGenerator:
         self.state_probability = state_prob
         self.transition_probability = transition_prob
         self.emission_probability = emission_prob
+        if random_seed is not None:
+            np.random.seed(random_seed)
+
         if state_prob is None:
             self.random_state_prob()
         if transition_prob is None:
